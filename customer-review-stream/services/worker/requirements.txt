@@ -1,0 +1,5 @@
+redis==5.0.8
+psycopg2-binary==2.9.9
+textblob==0.18.0.post0
+prometheus-client==0.20.0
+python-dotenv==1.0.1
