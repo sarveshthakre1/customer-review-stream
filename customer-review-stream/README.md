@@ -4,7 +4,7 @@
 ![Docker](https://img.shields.io/badge/Docker-Ready-blue)
 ![Made with FastAPI](https://img.shields.io/badge/FastAPI-🏎️-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
-
+ 
 Small but production‑flavored microservice system:
 - **FastAPI** for ingest + aggregation endpoints
 - **Redis** queue for decoupled processing
