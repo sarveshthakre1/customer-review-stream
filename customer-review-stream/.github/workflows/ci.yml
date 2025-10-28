@@ -3,8 +3,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-  workflow_dispatch:  # <-- add this line
- 
+  
 jobs:
   build-test:
     runs-on: ubuntu-latest
