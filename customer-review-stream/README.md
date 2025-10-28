@@ -36,3 +36,16 @@ Visit `http://localhost:8000/docs` for interactive API.
 
 ## Deploy ideas
 - Push images to GHCR, deploy to AWS ECS Fargate.
+
+## 🧠 Architecture Diagram
+
+```mermaid
+flowchart LR
+  Client -->|POST /reviews| API[FastAPI API]
+  API -->|LPUSH review_jobs| Redis[(Redis Queue)]
+  Worker -->|BRPOP review_jobs| Redis
+  API -->|INSERT| DB[(PostgreSQL)]
+  Worker -->|UPDATE sentiment| DB
+  API -->|GET /stats| DB
+  API -->|/metrics| Prometheus
+  Worker -->|/metrics| Prometheus
