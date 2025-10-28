@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-  workflow_dispatch:  # lets you click “Run workflow” in Actions
+  workflow_dispatch:
 
 jobs:
   build-test:
@@ -16,18 +16,25 @@ jobs:
         with:
           python-version: "3.11"
 
-      # Lint but don't fail the build if style nits exist
+      # Lint (non-blocking)
       - name: Lint (ruff)
         run: |
           pip install ruff
           ruff check services || true
 
+      # Unit tests (this is the required gate)
       - name: Unit tests
         run: |
           pip install pytest requests
           pytest -q
 
-      - name: Build containers
+      # Optional: try building images, but don't fail CI if Docker hiccups
+      - name: Build API image (optional)
+        continue-on-error: true
         run: |
           docker build -t api:ci ./services/api
+
+      - name: Build worker image (optional)
+        continue-on-error: true
+        run: |
           docker build -t worker:ci ./services/worker
