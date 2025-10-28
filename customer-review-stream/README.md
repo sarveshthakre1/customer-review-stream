@@ -1,4 +1,8 @@
 # Customer-Review Stream (FastAPI + Redis + Worker + PostgreSQL)
+![Build](https://img.shields.io/github/actions/workflow/status/sarveshthakre1/customer-review-stream/ci.yml?branch=main)
+![Docker](https://img.shields.io/badge/Docker-Ready-blue)
+![Made with FastAPI](https://img.shields.io/badge/FastAPI-🏎️-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 Small but production‑flavored microservice system:
 - **FastAPI** for ingest + aggregation endpoints
